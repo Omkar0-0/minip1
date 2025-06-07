@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Violation | Right For You</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1>Right For You</h1>
+            <div class="nav-links"></div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="form-container">
+            <h2>Report Human Rights Violation</h2>
+            <form id="reportForm">
+                <div class="form-group">
+                    <label for="violationType">Type of Violation</label>
+                    <select id="violationType" required>
+                        <option value="">Select violation type</option>
+                        <optgroup label="Violence and Abuse">
+                            <option value="gender">Gender-based Violence</option>
+                            <option value="domestic">Domestic Violence</option>
+                            <option value="child">Child Abuse</option>
+                            <option value="elder">Elder Abuse</option>
+                            <option value="sexual">Sexual Harassment</option>
+                            <option value="human-trafficking">Human Trafficking</option>
+                        </optgroup>
+                        <optgroup label="Law Enforcement">
+                            <option value="police">Police Brutality</option>
+                            <option value="arbitrary-arrest">Arbitrary Arrest</option>
+                            <option value="torture">Torture or Inhumane Treatment</option>
+                            <option value="detention">Unlawful Detention</option>
+                        </optgroup>
+                        <optgroup label="Discrimination">
+                            <option value="racial">Racial Discrimination</option>
+                            <option value="religious">Religious Discrimination</option>
+                            <option value="ethnic">Ethnic Discrimination</option>
+                            <option value="disability">Disability Discrimination</option>
+                            <option value="lgbtq">LGBTQ+ Discrimination</option>
+                        </optgroup>
+                        <optgroup label="Workplace Rights">
+                            <option value="forced-labor">Forced Labor</option>
+                            <option value="child-labor">Child Labor</option>
+                            <option value="workplace-discrimination">Workplace Discrimination</option>
+                            <option value="unsafe-conditions">Unsafe Working Conditions</option>
+                        </optgroup>
+                        <optgroup label="Housing and Property">
+                            <option value="forced-eviction">Forced Eviction</option>
+                            <option value="property-confiscation">Property Confiscation</option>
+                            <option value="housing-discrimination">Housing Discrimination</option>
+                        </optgroup>
+                        <optgroup label="Education">
+                            <option value="education-access">Denial of Education</option>
+                            <option value="education-discrimination">Education Discrimination</option>
+                        </optgroup>
+                        <optgroup label="Healthcare">
+                            <option value="healthcare-access">Denial of Healthcare</option>
+                            <option value="healthcare-discrimination">Healthcare Discrimination</option>
+                        </option>
+                        <optgroup label="Freedom of Expression">
+                            <option value="censorship">Censorship</option>
+                            <option value="press-freedom">Press Freedom Violation</option>
+                            <option value="assembly">Freedom of Assembly Violation</option>
+                            <option value="association">Freedom of Association Violation</option>
+                        </optgroup>
+                        <optgroup label="Other">
+                            <option value="other">Other Violation</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description of Violation</label>
+                    <textarea id="description" required 
+                        placeholder="Please provide detailed information about the violation, including:
+- When and where did it occur?
+- Who was involved?
+- What specific rights were violated?
+- Any other relevant details"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location of Violation</label>
+                    <input type="text" id="location" required 
+                        placeholder="City, State/Province, Country">
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Date of Violation</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <div class="form-group">
+                    <div class="anonymous-report-section">
+                        <div class="anonymous-header">
+                            <h3>Anonymous Reporting Options</h3>
+                            <div class="anonymous-toggle-container">
+                                <label class="toggle-switch">
+                                    <input type="checkbox" id="anonymousToggle">
+                                    <span class="toggle-slider"></span>
+                                </label>
+                                <span class="toggle-label">Enable Anonymous Reporting</span>
+                            </div>
+                        </div>
+
+                        <div class="anonymous-options">
+                            <div class="option-card" id="partialAnonymous">
+                                <div class="option-header">
+                                    <input type="radio" name="anonymousType" id="partial" value="partial">
+                                    <label for="partial" class="radio-label">
+                                        <span class="radio-custom"></span>
+                                        <span class="option-title">Partial Anonymity</span>
+                                    </label>
+                                </div>
+                                <div class="option-details">
+                                    <ul>
+                                        <li>Share basic contact information</li>
+                                        <li>Receive case updates</li>
+                                        <li>Allow follow-up communication</li>
+                                        <li>Maintain some privacy</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="option-card" id="fullAnonymous">
+                                <div class="option-header">
+                                    <input type="radio" name="anonymousType" id="full" value="full">
+                                    <label for="full" class="radio-label">
+                                        <span class="radio-custom"></span>
+                                        <span class="option-title">Full Anonymity</span>
+                                    </label>
+                                </div>
+                                <div class="option-details">
+                                    <ul>
+                                        <li>No personal information shared</li>
+                                        <li>Maximum privacy protection</li>
+                                        <li>No direct follow-up possible</li>
+                                        <li>Limited case updates</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="anonymous-info">
+                            <div class="info-box">
+                                <h4>Why Choose Anonymous Reporting?</h4>
+                                <ul>
+                                    <li>Protection from potential retaliation</li>
+                                    <li>Safe reporting environment</li>
+                                    <li>Confidentiality assurance</li>
+                                </ul>
+                            </div>
+                            <div class="info-box">
+                                <h4>Important Considerations</h4>
+                                <ul>
+                                    <li>Limited ability to follow up on your report</li>
+                                    <li>May affect investigation effectiveness</li>
+                                    <li>Cannot receive direct updates on case progress</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="evidence">Evidence (up to 2 files)</label>
+                    <div class="file-upload-container">
+                        <input type="file" id="evidence" multiple 
+                            accept="image/*,.pdf,.doc,.docx,.txt"
+                            class="file-upload-input">
+                        <div class="file-upload-info">
+                            <p>Accepted file types: Images, PDF, Word documents, Text files</p>
+                            <p>Maximum file size: 5MB per file</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact">Contact Information (if not anonymous)</label>
+                    <input type="email" id="contact" 
+                        placeholder="Email address for follow-up">
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Submit Report</button>
+                    <button type="reset" class="btn btn-secondary">Clear Form</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/report.js"></script>
+</body>
+</html> 

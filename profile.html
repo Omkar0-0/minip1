@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Management | Right For You</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .profile-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .profile-sidebar {
+            background: var(--glass-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--glass-shadow);
+            border: 1px solid var(--glass-border);
+        }
+        .profile-nav {
+            list-style: none;
+            padding: 0;
+        }
+        .profile-nav li {
+            margin-bottom: 0.5rem;
+        }
+        .profile-nav a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            color: var(--text);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .profile-nav a:hover,
+        .profile-nav a.active {
+            background: var(--primary);
+            color: white;
+        }
+        .profile-nav i {
+            width: 20px;
+            text-align: center;
+        }
+        .profile-content {
+            background: var(--glass-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--glass-shadow);
+            border: 1px solid var(--glass-border);
+        }
+        .profile-section {
+            display: none;
+        }
+        .profile-section.active {
+            display: block;
+        }
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .profile-header h3 {
+            margin: 0;
+            color: var(--text);
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .toggle-slider {
+            background-color: var(--primary);
+        }
+        input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+        .preference-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .preference-item:last-child {
+            border-bottom: none;
+        }
+        .preference-info h4 {
+            margin: 0;
+            color: var(--text);
+        }
+        .preference-info p {
+            margin: 0.3rem 0 0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1>Right For You</h1>
+            <div class="nav-links"></div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="profile-container">
+            <div class="profile-sidebar">
+                <ul class="profile-nav">
+                    <li>
+                        <a href="#personal" class="active" data-section="personal">
+                            <i class="fas fa-user"></i>
+                            Personal Information
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#security" data-section="security">
+                            <i class="fas fa-lock"></i>
+                            Security Settings
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#preferences" data-section="preferences">
+                            <i class="fas fa-cog"></i>
+                            Preferences
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#notifications" data-section="notifications">
+                            <i class="fas fa-bell"></i>
+                            Notifications
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="profile-content">
+                <!-- Personal Information Section -->
+                <div id="personal" class="profile-section active">
+                    <div class="profile-header">
+                        <h3>Personal Information</h3>
+                    </div>
+                    <form id="personalInfoForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" pattern="[0-9]{10}">
+                        </div>
+                        <div class="form-group">
+                            <label for="language">Preferred Language</label>
+                            <select id="language" required>
+                                <option value="en">English</option>
+                                <option value="hi">Hindi</option>
+                                <option value="bn">Bengali</option>
+                                <option value="ta">Tamil</option>
+                                <option value="te">Telugu</option>
+                                <option value="mr">Marathi</option>
+                                <option value="gu">Gujarati</option>
+                                <option value="kn">Kannada</option>
+                                <option value="ml">Malayalam</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn">Save Changes</button>
+                    </form>
+                </div>
+
+                <!-- Security Settings Section -->
+                <div id="security" class="profile-section">
+                    <div class="profile-header">
+                        <h3>Security Settings</h3>
+                    </div>
+                    <form id="securityForm">
+                        <div class="form-group">
+                            <label for="currentPassword">Current Password</label>
+                            <input type="password" id="currentPassword" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword">New Password</label>
+                            <input type="password" id="newPassword" required>
+                            <div class="password-strength"></div>
+                            <div class="strength-text"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirmNewPassword">Confirm New Password</label>
+                            <input type="password" id="confirmNewPassword" required>
+                        </div>
+                        <button type="submit" class="btn">Update Password</button>
+                    </form>
+                </div>
+
+                <!-- Preferences Section -->
+                <div id="preferences" class="profile-section">
+                    <div class="profile-header">
+                        <h3>Preferences</h3>
+                    </div>
+                    <div class="preference-item">
+                        <div class="preference-info">
+                            <h4>Dark Mode</h4>
+                            <p>Switch between light and dark theme</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="darkModeToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="preference-item">
+                        <div class="preference-info">
+                            <h4>Email Updates</h4>
+                            <p>Receive email notifications about your reports</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="emailUpdatesToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Notifications Section -->
+                <div id="notifications" class="profile-section">
+                    <div class="profile-header">
+                        <h3>Notification Settings</h3>
+                    </div>
+                    <div class="preference-item">
+                        <div class="preference-info">
+                            <h4>Report Status Updates</h4>
+                            <p>Get notified when your report status changes</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="statusUpdatesToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="preference-item">
+                        <div class="preference-info">
+                            <h4>New Messages</h4>
+                            <p>Receive notifications for new messages</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="messageNotificationsToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="preference-item">
+                        <div class="preference-info">
+                            <h4>System Updates</h4>
+                            <p>Get notified about system updates and maintenance</p>
+                        </div>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="systemUpdatesToggle">
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html> 
